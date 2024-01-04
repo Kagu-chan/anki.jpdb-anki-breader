@@ -1,0 +1,8 @@
+.jpdb-word:is(.never-forget, .known, .redundant, .due, .failed) .jpdb-furi { display: none; }
+.jpdb-word { color: inherit; }
+.jpdb-word:is(.blacklisted, .suspended, .unparsed) { color: #777; opacity: .8; }
+.jpdb-word:is(.new, .locked) { color: #4b8dff; }
+.jpdb-word:is(.known, .never-forget, .redundant) { color: #70c000; }
+.jpdb-word:is(.due, .failed) { color: orangered; }
+
+.jpdb-word.learning { color: orange; }

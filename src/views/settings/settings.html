@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script type="module" src="settings.js"></script>
+        <link rel="stylesheet" href="settings.css" />
+
+        <title>Reader Settings</title>
+        <link rel="icon" href="../../icons/logo_32.png" />
+    </head>
+    <body>
+        <article>
+            <nav>
+                <h1>Sections:</h1>
+                <a href="#connectivity" class="active">Connectivity</a>
+                <a href="#keybinds">Keybinds</a>
+                <a href="#accessibility">Accessibility</a>
+                <a href="#appearance">Appearance</a>
+                <a href="#import-export">Import/Export</a>
+
+                <input type="submit" id="save" value="Save settings" />
+            </nav>
+            <div id="settings">
+                <section id="general">
+                    <h1>Connectivity</h1>
+                    <div class="explanation">
+                        To find your API token, visit the
+                        <a
+                            href="https://jpdb.io/settings#:~:text=in%20the%20future.-,Account%20information,-Username"
+                            target="_blank"
+                            >jpdb settings page</a
+                        >
+                        and scroll to the very bottom.
+                    </div>
+                    <setting-token class="setting" name="apiToken">API Token</setting-token>
+                    <setting-token class="setting" name="ankiConnectUrl">Anki Connect URL</setting-token>
+                </section>
+                <section id="general">
+                    <h1>Mining</h1>
+                    <div class="explanation">
+                        To use certain decks, enter its exact name here. Leave empty to not use the related feature.<br />
+                        <br />
+                        Set a Mining deck to mine new words into it.<br />
+                        Add a search query to search for new, learning or known words.<br />
+                        Use <deck>@deck</deck> as deck placeholder and <code>@query</code> as lookup placeholder.<br />
+                        The query does not need to search the mining deck only, it can look in all sort of fields.
+                    </div>
+                    <setting-deck class="setting" name="miningDeck">Mining deck</setting-deck>
+                    <setting-token class="setting" name="miningQuery">Search query</setting-token>
+                    <div class="explanation">
+                        Set a Blacklist deck to mark found words with <code>.blacklisted</code>.<br />
+                        Add a search query to relate this deck to its fields when searching.<br />
+                        Use <deck>@deck</deck> as deck placeholder and <code>@query</code> as lookup placeholder.<br />
+                        It is recommended to let the query search specifically the configured deck.
+                    </div>
+                    <setting-deck class="setting" name="blacklistDeck">Blacklist deck</setting-deck>
+                    <setting-token class="setting" name="blacklistQuery">Blacklist search query</setting-token>
+                    <div class="explanation">
+                        Set a Never forget deck to mark found words with <code>.never-forget</code>.<br />
+                        Add a search query to relate this deck to its fields when searching.<br />
+                        Use <deck>@deck</deck> as deck placeholder and <code>@query</code> as lookup placeholder.<br />
+                        It is recommended to let the query search specifically the configured deck.
+                    </div>
+                    <setting-deck class="setting" name="neverForgetDeck">Never forget deck</setting-deck>
+                    <setting-token class="setting" name="neverForgetQuery">Never forget search query</setting-token>
+                    <setting-number class="setting" name="contextWidth">Number of context sentences</setting-number>
+                </section>
+                <section id="keybinds">
+                    <h1>Keybinds</h1>
+                    <div class="explanation">
+                        Press escape to clear. Holding modifiers like shift or alt is supported. <br />
+                        Hotkeys are based on key position and independent of your current keyboard layout. <br />
+                        Note: Keybinds currently always work on the word you are hovering your mouse over, even if you
+                        have the popup for another word open.
+                        <!-- Clearing "Show popup" engages hover mode. -->
+                    </div>
+                    <setting-keybind class="setting" name="showPopupKey">Show popup</setting-keybind>
+                    <setting-keybind class="setting" name="addKey">Add word to mining deck</setting-keybind>
+                    <setting-keybind class="setting" name="dialogKey">Show advanced mining dialog</setting-keybind>
+                    <setting-keybind class="setting" name="blacklistKey">Blacklist word</setting-keybind>
+                    <setting-keybind class="setting" name="neverForgetKey">Mark word as never forget</setting-keybind>
+                    <setting-keybind class="setting" name="againKey">Review word as again</setting-keybind>
+                    <setting-keybind class="setting" name="hardKey">Review word as hard</setting-keybind>
+                    <setting-keybind class="setting" name="goodKey">Review word as good</setting-keybind>
+                    <setting-keybind class="setting" name="easyKey">Review word as easy</setting-keybind>
+                </section>
+                <section id="accessibility">
+                    <h1>Accessibility</h1>
+                    <setting-boolean class="setting" name="showPopupOnHover">Show the popup on hover</setting-boolean>
+                    <setting-boolean class="setting" name="touchscreenSupport">Touchscreen support</setting-boolean>
+                    <setting-boolean class="setting" name="disableFadeAnimation"
+                        >Disable fade animation</setting-boolean
+                    >
+                </section>
+                <section id="appearance">
+                    <h1>Appearance</h1>
+                    <setting-string class="setting" name="customWordCSS">Custom Word CSS</setting-string>
+                    <setting-string class="setting" name="customPopupCSS">Custom Popup CSS</setting-string>
+                    <setting-boolean class="setting" name="hideAllFurigana" min="0"
+                        >Automatically hide all furigana</setting-boolean
+                    >
+                </section>
+                <section id="import-export">
+                    <h1>Import/Export</h1>
+                    <div>
+                        <button id="export">Export Settings</button>
+                        <button id="import">Import Settings</button>
+                        <input type="file" id="import-file-picker" accept="application/json" />
+                    </div>
+                </section>
+            </div>
+            <aside id="preview"></aside>
+        </article>
+    </body>
+</html>
