@@ -1,7 +1,7 @@
 {
-    "name": "jpdb.io-script-runer",
-    "version": "1.0.1",
-    "description": "JPDB.io Script Runner",
+    "name": "anki.jpdb-anki-breader",
+    "version": "0.0.0",
+    "description": "Anki JPDB Breader",
     "main": "src/index.ts",
     "scripts": {
         "watch": "webpack --watch",
@@ -15,9 +15,9 @@
     "author": "Kagu-chan",
     "license": "GPL-3.0",
     "bugs": {
-        "url": "https://github.com/Kagu-chan/jpdb.io/issues"
+        "url": "https://github.com/Kagu-chan/anki.jpdb-anki-breader/issues"
     },
-    "homepage": "https://github.com/Kagu-chan/jpdb.io",
+    "homepage": "https://github.com/Kagu-chan/anki.jpdb-anki-breader",
     "devDependencies": {
         "@types/node": "^20.8.10",
         "@typescript-eslint/eslint-plugin": "^6.9.1",
