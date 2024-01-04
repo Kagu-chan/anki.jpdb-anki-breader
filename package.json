@@ -1,0 +1,22 @@
+{
+  "name": "anki.jpdb-anki-breader",
+  "version": "0.0.1",
+  "description": "Anki mining and JPDB parsing in your browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kagu-chan/anki.jpdb-anki-breader.git"
+  },
+  "author": "Kagu-chan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kagu-chan/anki.jpdb-anki-breader/issues"
+  },
+  "homepage": "https://github.com/Kagu-chan/anki.jpdb-anki-breader#readme",
+  "devDependencies": {
+    "chrome-types": "^0.1.246"
+  }
+}
