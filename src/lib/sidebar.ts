@@ -2,7 +2,7 @@ const nop = (): void => {
   /* NOP */
 };
 
-export const openSidebar = (view: string): void => {
+export const openSidebar = (view: string, closeView?: boolean): void => {
   chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
     const [activeTab] = tabs;
 
@@ -21,7 +21,11 @@ export const openSidebar = (view: string): void => {
           {
             tabId: activeTab.id,
           },
-          nop,
+          () => {
+            if (closeView) {
+              window.close();
+            }
+          },
         );
       },
     );
