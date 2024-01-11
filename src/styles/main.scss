@@ -1,0 +1,13 @@
+@import './colors.scss';
+@import './icons.scss';
+@import './material.scss';
+
+body {
+  background-color: gray;
+  line-height: 1.5;
+
+  .container {
+    color: rgba(0, 0, 0, 0.87);
+    background-color: white;
+  }
+}

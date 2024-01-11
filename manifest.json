@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "JPDB Anki Breader",
+  "version": "0.0.1",
+  "description": "Anki mining and JPDB parsing in your browser",
+  "minimum_chrome_version": "116",
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "side_panel": {
+    "default_path": "views/sidebar/sidebar.html"
+  },
+  "action": {
+    "default_popup": "views/popup/popup.html",
+    "default_icon": {
+      "16": "assets/fav/16.png",
+      "48": "assets/fav/48.png",
+      "128": "assets/fav/128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://google.com/*"],
+      "js": ["apps/google.js"]
+    }
+  ],
+  "permissions": ["sidePanel", "contextMenus"],
+  "icons": {
+    "16": "assets/fav/16.png",
+    "48": "assets/fav/48.png",
+    "128": "assets/fav/128.png"
+  }
+}
