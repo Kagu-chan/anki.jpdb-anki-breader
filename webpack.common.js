@@ -1,5 +1,4 @@
 const path = require('path');
-const { dynamicImport } = require('tsimportlib');
 const { DefinePlugin, ids } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -10,12 +9,9 @@ const contentScripts = ['google'];
 
 module.exports = {
   async config(env) {
-    const linkerPlugin = await dynamicImport('@angular/compiler-cli/linker/babel', module);
-
     return {
       mode: env,
       entry: {
-        polyfills: './src/polyfills.ts',
         'service-worker': {
           import: './src/service-worker.ts',
           filename: 'service-worker.js',
@@ -76,7 +72,7 @@ module.exports = {
             new HtmlWebpackPlugin({
               filename: `views/${view}/${view}.html`,
               template: `src/views/${view}/${view}.html`,
-              chunks: ['polyfills', `view/${view}`],
+              chunks: [`view/${view}`],
             }),
         ),
       ],
@@ -106,17 +102,6 @@ module.exports = {
               },
             ],
           },
-          {
-            test: /\.mjs$/,
-            loader: 'babel-loader',
-            options: {
-              compact: false,
-              plugins: [linkerPlugin.default],
-            },
-            resolve: {
-              fullySpecified: false
-            }
-          }
         ],
       },
       output: {

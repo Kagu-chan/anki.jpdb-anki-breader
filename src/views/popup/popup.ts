@@ -1,9 +1,5 @@
-// import '@/lib/includes';
-// import './popup.scss';
-
-import { Component, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import '@/lib/includes';
+import './popup.scss';
 
 // import { openSidebar } from '@/lib/sidebar';
 
@@ -18,19 +14,3 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 //     void openSidebar('sidebar');
 //   });
 // })();
-
-@Component({
-  selector: 'app-popup',
-  template: '<h1>Hello Friend</h1>',
-})
-class PopupComponent {}
-
-@NgModule({
-  declarations: [PopupComponent],
-  imports: [BrowserModule],
-  providers: [],
-  bootstrap: [PopupComponent],
-})
-class PopupModule {}
-
-void platformBrowserDynamic().bootstrapModule(PopupModule);

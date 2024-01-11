@@ -1,6 +1,43 @@
 <html>
   <head></head>
   <body>
-    <app-popup></app-popup>
+    <div class="container">
+      <div class="mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__supporting-text mdl-card--expand">
+          <ul class="mdl-list" x-data="{ tabs: ['popup.html', 'Orangestar - Surges (feat. '] }">
+            <template x-for="tab in tabs">
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-icon">person</i>
+                  <span x-text="tab"></span>
+                  <!-- Bryan Cranston -->
+                </span>
+              </li>
+              <!-- <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-icon">person</i>
+                  Aaron Paul
+                </span>
+              </li>
+              <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-icon">person</i>
+                  Bob Odenkirk
+                </span>
+              </li> -->
+            </template>
+          </ul>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a id="open-sidebar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Open in sidebar
+          </a>
+          <div class="mdl-layout-spacer"></div>
+          <button id="open-settings" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect mdl-button--colored">
+            <i class="material-icons">settings</i>
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
