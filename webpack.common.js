@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const { version } = require('./package.json');
 
 const views = ['popup', 'settings', 'sidebar'];
-const contentScripts = ['google'];
+const contentScripts = ['google', 'youtube'];
 
 module.exports = {
   async config(env) {

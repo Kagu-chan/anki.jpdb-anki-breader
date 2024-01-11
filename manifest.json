@@ -22,9 +22,14 @@
     {
       "matches": ["https://google.com/*"],
       "js": ["apps/google.js"]
+    },
+    {
+      "matches": ["https://youtube.com/*"],
+      "js": ["apps/youtube.js"]
     }
   ],
-  "permissions": ["sidePanel", "contextMenus"],
+  "permissions": ["sidePanel", "contextMenus", "tabs", "scripting"],
+  "host_permissions": ["http://*/*", "https://*/*"],
   "icons": {
     "16": "assets/fav/16.png",
     "48": "assets/fav/48.png",

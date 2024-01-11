@@ -1,19 +1,42 @@
 @import '@/styles/main.scss';
 
 .container {
-  min-width: 128px;
   max-width: 256px;
 
   .mdl-card {
+    min-height: unset;
     width: 256px;
-    height: 256px;
     background: #3e4eb8;
 
-    .mdl-card__title {
-      align-items: flex-start;
+    .mdl-card__supporting-text {
+      padding: 0;
+      line-height: 1.5;
+      width: 100%;
 
-      h4 {
-        margin-top: 0;
+      .mdl-list {
+        line-height: 1.5;
+        padding: 0;
+
+        .mdl-list__item {
+          padding: 0 16px;
+
+          .mdl-button {
+            color: #fff;
+            width: 192px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-align: start;
+            text-transform: none;
+          }
+
+          .mdl-list__item-icon,
+          img {
+            width: 24px;
+            height: 24px;
+            margin-right: 16px;
+          }
+        }
       }
     }
 

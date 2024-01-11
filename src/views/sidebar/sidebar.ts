@@ -1,9 +1,15 @@
-import { openSidebar } from '@/lib/sidebar';
+import '@/lib/includes';
 
-((): void => {
-  const settingsButton = document.getElementById('open-settings');
+import './components/header';
+import './components/parser';
+import './sidebar.scss';
 
-  settingsButton?.addEventListener('click', () => {
-    void openSidebar('settings');
-  });
-})();
+// import { openSidebar } from '@/lib/sidebar';
+
+// ((): void => {
+//   const settingsButton = document.getElementById('open-settings');
+
+//   settingsButton?.addEventListener('click', () => {
+//     void openSidebar('settings');
+//   });
+// })();
