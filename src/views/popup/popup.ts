@@ -8,7 +8,7 @@ import '@material/web/button/text-button';
 import '@material/web/icon/icon.js';
 import '@material/web/divider/divider.js';
 
-import './components/tab-list';
+import './tab-list';
 
 import popupStyles from './popup.scss';
 

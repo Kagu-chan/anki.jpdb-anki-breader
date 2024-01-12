@@ -12,7 +12,7 @@ export class SettingsButton extends LitElement {
   public render(): TemplateResult {
     return html`<md-icon-button
       aria-label="Settings"
-      @click="${(): void => openSidebar(/*'settings',*/ 'popup', this.closeWindow)}"
+      @click="${(): void => openSidebar('settings', this.closeWindow)}"
       ><md-icon>settings</md-icon></md-icon-button
     >`;
   }
