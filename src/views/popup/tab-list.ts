@@ -1,6 +1,6 @@
 import { componentStyles } from '@components/component-styles';
 import { TabManager } from '@lib/tab-manager';
-import { LitElement, TemplateResult, html } from 'lit';
+import { LitElement, TemplateResult, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';
 import { when } from 'lit/directives/when.js';
@@ -13,15 +13,20 @@ import '@material/web/list/list-item.js';
 export class PopupTabList extends LitElement {
   @property({ attribute: false }) private _tabs: chrome.tabs.Tab[] = [];
 
-  public static styles = [componentStyles];
+  public static styles = [
+    componentStyles,
+    css`
+      md-list-item[active] {
+        background-color: rgba(1, 1, 1, 0.05);
+      }
+    `,
+  ];
   private tabManager = new TabManager();
 
   constructor() {
     super();
 
-    void this.tabManager
-      .fetchTabs()
-      .then((tabs) => (this._tabs = tabs.sort((a) => (a.active ? -1 : 1))));
+    void this.tabManager.fetchTabs().then((tabs) => (this._tabs = tabs));
   }
 
   public render(): TemplateResult {
@@ -30,10 +35,11 @@ export class PopupTabList extends LitElement {
         this._tabs,
         (tab) =>
           html`<md-list-item
+            ?active="${tab.active}"
             type="button"
             @click="${(): Promise<void> => this.onTabClicked(tab.id)}"
           >
-            >${when(
+            ${when(
               tab.favIconUrl?.length,
               () => html`<img slot="start" class="icon" src="${tab.favIconUrl}" />`,
               () => html`<md-icon slot="start" class="icon">abc</md-icon>`,

@@ -19,6 +19,7 @@ export class TabManager {
       {
         title: 'Test tab 1',
         favIconUrl: 'https://www.google.com/favicon.ico',
+        active: true,
       },
       {
         title: 'Test tab 2',

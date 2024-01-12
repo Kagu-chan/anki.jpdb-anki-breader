@@ -18,9 +18,7 @@ export class PopupView extends LitElement {
 
   public render(): TemplateResult {
     return html`<div class="container">
-      <div class="tab-list">
-        <popup-tab-list></popup-tab-list>
-      </div>
+      <popup-tab-list></popup-tab-list>
       <md-divider></md-divider>
       <div class="actions flex p1">
         <md-text-button
