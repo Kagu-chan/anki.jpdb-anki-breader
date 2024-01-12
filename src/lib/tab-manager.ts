@@ -1,6 +1,20 @@
 export class TabManager {
+  private static _instance: TabManager;
+  public static get instance(): TabManager {
+    if (!this._instance) {
+      this._instance = new TabManager();
+    }
+
+    return this._instance;
+  }
+
+  private _isExtension: boolean;
+  private constructor() {
+    this._isExtension = !!chrome?.tabs;
+  }
+
   public fetchTabs(): Promise<chrome.tabs.Tab[]> {
-    if (chrome?.tabs) {
+    if (this._isExtension) {
       return chrome.tabs.query({ lastFocusedWindow: true });
     }
 
@@ -8,9 +22,26 @@ export class TabManager {
     return Promise.resolve(this.getFakeTabs());
   }
 
+  public async fetchActiveTab(): Promise<chrome.tabs.Tab | undefined> {
+    const tabs = await this.fetchTabs();
+
+    return tabs.find((tab) => tab.active);
+  }
+
   public async navigateToTab(tabId: number): Promise<void> {
-    if (chrome?.tabs) {
+    if (this._isExtension) {
       await chrome.tabs.update(tabId, { active: true });
+    }
+  }
+
+  public onThisTabUpdate(callback: (tabs: chrome.tabs.Tab) => void): void {
+    if (this._isExtension) {
+      chrome.tabs.onUpdated.addListener(
+        (tabId: number) =>
+          void this.fetchTabs()
+            .then((tabs) => tabs.find((t) => t.id === tabId))
+            .then((tab) => callback(tab)),
+      );
     }
   }
 

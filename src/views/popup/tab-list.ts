@@ -1,7 +1,7 @@
 import { componentStyles } from '@components/component-styles';
-import { TabManager } from '@lib/tab-manager';
-import { LitElement, TemplateResult, css, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { TabsElement } from '@components/tabs-element';
+import { TemplateResult, css, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';
 import { when } from 'lit/directives/when.js';
 
@@ -10,9 +10,7 @@ import '@material/web/list/list.js';
 import '@material/web/list/list-item.js';
 
 @customElement('popup-tab-list')
-export class PopupTabList extends LitElement {
-  @property({ attribute: false }) private _tabs: chrome.tabs.Tab[] = [];
-
+export class PopupTabList extends TabsElement {
   public static styles = [
     componentStyles,
     css`
@@ -21,13 +19,6 @@ export class PopupTabList extends LitElement {
       }
     `,
   ];
-  private tabManager = new TabManager();
-
-  constructor() {
-    super();
-
-    void this.tabManager.fetchTabs().then((tabs) => (this._tabs = tabs));
-  }
 
   public render(): TemplateResult {
     return html`<md-list>
@@ -50,7 +41,7 @@ export class PopupTabList extends LitElement {
   }
 
   private async onTabClicked(tabId: number): Promise<void> {
-    await this.tabManager.navigateToTab(tabId);
+    await this._tabManager.navigateToTab(tabId);
     // @TODO: Inject CSS and JS into the tab.
 
     // @note the following code should be part of the parsing API. Here for future reference.
