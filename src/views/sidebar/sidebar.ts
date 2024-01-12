@@ -1,4 +1,4 @@
-import '@/lib/includes';
+import '@lib/includes';
 
 import './components/header';
 import './components/parser';

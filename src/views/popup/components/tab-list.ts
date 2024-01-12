@@ -1,82 +1,59 @@
+import { componentStyles } from '@components/component-styles';
+import { TabManager } from '@lib/tab-manager';
 import { LitElement, TemplateResult, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';
 import { when } from 'lit/directives/when.js';
 
-@customElement('tab-list')
-export class TabList extends LitElement {
-  @property() public tabs: Partial<chrome.tabs.Tab>[] = [];
+import '@material/web/icon/icon.js';
+import '@material/web/list/list.js';
+import '@material/web/list/list-item.js';
+
+@customElement('popup-tab-list')
+export class PopupTabList extends LitElement {
+  @property({ attribute: false }) private _tabs: chrome.tabs.Tab[] = [];
+
+  public static styles = [componentStyles];
+  private tabManager = new TabManager();
 
   constructor() {
     super();
 
-    this.getWindowTabs();
+    void this.tabManager
+      .fetchTabs()
+      .then((tabs) => (this._tabs = tabs.sort((a) => (a.active ? -1 : 1))));
   }
 
   public render(): TemplateResult {
-    return html`<ul class="mdl-list">
+    return html`<md-list>
       ${map(
-        this.tabs,
+        this._tabs,
         (tab) =>
-          html`<li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-              <a
-                class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                @click="${(): Promise<void> => this.onParseClicked(tab.id)}"
-              >
-                ${when(
-                  tab.favIconUrl?.length,
-                  () => html`<img src="${tab.favIconUrl}" />`,
-                  () => html`<i class="material-icons mdl-list__item-icon">abc</i>`,
-                )}
-                ${tab.title}
-              </a>
-            </span>
-          </li>`,
+          html`<md-list-item
+            type="button"
+            @click="${(): Promise<void> => this.onTabClicked(tab.id)}"
+          >
+            >${when(
+              tab.favIconUrl?.length,
+              () => html`<img slot="start" class="icon" src="${tab.favIconUrl}" />`,
+              () => html`<md-icon slot="start" class="icon">abc</md-icon>`,
+            )}<span class="truncate">${tab.title}</span></md-list-item
+          >`,
       )}
-    </ul>`;
-    // <i class="material-icons mdl-list__item-icon">person</i>
+    </md-list>`;
   }
 
-  protected createRenderRoot(): HTMLElement {
-    return this;
-  }
+  private async onTabClicked(tabId: number): Promise<void> {
+    await this.tabManager.navigateToTab(tabId);
+    // @TODO: Inject CSS and JS into the tab.
 
-  protected getWindowTabs(): void {
-    if (chrome?.tabs) {
-      chrome.tabs.query({ lastFocusedWindow: true }, (tabs) => {
-        this.tabs = tabs.sort((a) => (a.active ? -1 : 1));
-      });
-    } else {
-      this.tabs = [
-        {
-          title: 'Test tab 1',
-          favIconUrl: 'https://www.google.com/favicon.ico',
-        },
-        {
-          title: 'Test tab 2',
-        },
-        {
-          title: 'Test tab 3',
-          favIconUrl: 'https://www.google.com/favicon.ico',
-        },
-      ];
-    }
-  }
-
-  protected async onParseClicked(tabId?: number): Promise<void> {
-    if (tabId) {
-      await chrome.tabs.update(tabId, { active: true, highlighted: true });
-      await chrome.scripting.insertCSS({
+    // @note the following code should be part of the parsing API. Here for future reference.
+    /* await chrome.scripting.insertCSS({
         target: { tabId },
         css: 'body { background-color: red; }',
       });
-      // await chrome.scripting.executeScript({
-      //   target: { tabId },
-      //   files: ['content.js'],
-      // });
+     */
 
-      window.close();
-    }
+    window.close();
   }
 }

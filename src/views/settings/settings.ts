@@ -1,4 +1,4 @@
-import { openSidebar } from '@/lib/sidebar';
+import { openSidebar } from '@lib/sidebar';
 
 ((): void => {
   const closeButton = document.getElementById('close-settings');

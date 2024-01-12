@@ -36,6 +36,7 @@ module.exports = {
             }),
           {},
         ),
+        styles: '@styles/main.scss',
       },
       resolve: {
         extensions: ['.tsx', '.ts', '.js'],
@@ -45,7 +46,10 @@ module.exports = {
           '.mts': ['.mjs', '.mts'],
         },
         alias: {
-          '@': path.resolve(__dirname, 'src'),
+          '@apps': path.resolve(__dirname, 'src/apps'),
+          '@components': path.resolve(__dirname, 'src/components'),
+          '@lib': path.resolve(__dirname, 'src/lib'),
+          '@styles': path.resolve(__dirname, 'src/styles'),
         },
       },
       plugins: [
@@ -72,15 +76,34 @@ module.exports = {
             new HtmlWebpackPlugin({
               filename: `views/${view}/${view}.html`,
               template: `src/views/${view}/${view}.html`,
-              chunks: [`view/${view}`],
+              chunks: ['styles', `view/${view}`],
             }),
         ),
       ],
       module: {
         rules: [
           {
-            test: /\.scss$/i,
-            use: ['style-loader', 'css-loader', 'sass-loader'],
+            test: /\.(scss)$/,
+            include: [path.resolve(__dirname, 'src/styles')],
+            use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+          },
+          {
+            test: /\.css|\.s(c|a)ss$/,
+            include: [
+              path.resolve(__dirname, 'src/components'),
+              path.resolve(__dirname, 'src/views'),
+            ],
+            use: [
+              {
+                loader: 'lit-scss-loader',
+                options: {
+                  minify: true,
+                },
+              },
+              'extract-loader',
+              'css-loader',
+              'sass-loader',
+            ],
           },
           {
             test: /\.(png|svg|jpg|jpeg|gif|mp3)$/i,
@@ -123,7 +146,6 @@ module.exports = {
           },
         },
       },
-      devtool: 'source-map',
     };
   },
 };
