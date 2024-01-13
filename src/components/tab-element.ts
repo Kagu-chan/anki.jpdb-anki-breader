@@ -1,6 +1,5 @@
+import { LitElement, property } from '@lib/lit';
 import { TabManager } from '@lib/tab-manager';
-import { LitElement } from 'lit';
-import { property } from 'lit/decorators.js';
 
 export abstract class TabElement extends LitElement {
   @property({ attribute: false }) protected _tab: chrome.tabs.Tab | undefined;

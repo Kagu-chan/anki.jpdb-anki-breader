@@ -1,13 +1,11 @@
 import { componentStyles } from '@components/component-styles';
+import { LitElement, TemplateResult, html, customElement } from '@lib/lit';
 import { openSidebar } from '@lib/sidebar';
-import { LitElement, TemplateResult, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
 
 import '@material/web/divider/divider.js';
 import '@material/web/iconbutton/icon-button.js';
 import '@material/web/icon/icon.js';
 import './sections/section';
-
 import './sections/jpdb';
 import './sections/anki';
 

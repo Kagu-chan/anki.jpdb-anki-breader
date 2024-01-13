@@ -1,6 +1,5 @@
 import { TabElement } from '@components/tab-element';
-import { TemplateResult, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, TemplateResult, html } from '@lib/lit';
 
 @customElement('sidebar-title')
 export class SidebarTitle extends TabElement {

@@ -1,6 +1,5 @@
+import { customElement, html, LitElement, property, TemplateResult } from '@lib/lit';
 import { openSidebar } from '@lib/sidebar';
-import { LitElement, TemplateResult, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
 
 import '@material/web/iconbutton/icon-button.js';
 import '@material/web/icon/icon.js';

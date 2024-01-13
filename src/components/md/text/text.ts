@@ -11,11 +11,11 @@ import {
   state,
   when,
 } from '@lib/lit';
+import { MdOutlinedTextField } from '@material/web/textfield/outlined-text-field.js';
+import { Subject, debounceTime, tap } from 'rxjs';
 
 import '@material/web/progress/circular-progress.js';
 import '@material/web/textfield/outlined-text-field.js';
-import { MdOutlinedTextField } from '@material/web/textfield/outlined-text-field.js';
-import { Subject, debounceTime, tap } from 'rxjs';
 
 @customElement('md-text')
 export class MdText extends LitElement {

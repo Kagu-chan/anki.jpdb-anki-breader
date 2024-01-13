@@ -1,9 +1,6 @@
 import { componentStyles } from '@components/component-styles';
 import { TabsElement } from '@components/tabs-element';
-import { TemplateResult, css, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import { map } from 'lit/directives/map.js';
-import { when } from 'lit/directives/when.js';
+import { TemplateResult, css, html, customElement, map, when } from '@lib/lit';
 
 import '@material/web/icon/icon.js';
 import '@material/web/list/list.js';

@@ -1,6 +1,5 @@
 import { componentStyles } from '@components/component-styles';
-import { LitElement, TemplateResult, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, LitElement, TemplateResult, html } from '@lib/lit';
 
 import '@components/settings-button';
 import '@material/web/icon/icon.js';

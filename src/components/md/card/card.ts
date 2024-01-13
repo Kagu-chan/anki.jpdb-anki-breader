@@ -7,7 +7,6 @@ import {
   toggleSlots,
   unsafeCSS,
 } from '@lib/lit';
-
 import cardStyles from './card.scss';
 
 @toggleSlots(['title', 'icon'], 'title')

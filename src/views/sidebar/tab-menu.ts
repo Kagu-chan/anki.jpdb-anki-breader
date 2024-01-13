@@ -1,10 +1,7 @@
 import { componentStyles } from '@components/component-styles';
 import { TabsElement } from '@components/tabs-element';
+import { customElement, query, TemplateResult, html, map, when } from '@lib/lit';
 import { MdMenu } from '@material/web/menu/menu.js';
-import { TemplateResult, html } from 'lit';
-import { customElement, query } from 'lit/decorators.js';
-import { map } from 'lit/directives/map.js';
-import { when } from 'lit/directives/when.js';
 
 import '@material/web/iconbutton/icon-button.js';
 import '@material/web/icon/icon.js';

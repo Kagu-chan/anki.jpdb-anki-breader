@@ -1,16 +1,13 @@
 import { componentStyles } from '@components/component-styles';
+import { customElement, LitElement, TemplateResult, html, unsafeCSS } from '@lib/lit';
 import { openSidebar } from '@lib/sidebar';
-import { LitElement, TemplateResult, html, unsafeCSS } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import popupStyles from './popup.scss';
 
 import '@components/settings-button';
 import '@material/web/button/text-button';
 import '@material/web/icon/icon.js';
 import '@material/web/divider/divider.js';
-
 import './tab-list';
-
-import popupStyles from './popup.scss';
 
 @customElement('popup-view')
 export class PopupView extends LitElement {

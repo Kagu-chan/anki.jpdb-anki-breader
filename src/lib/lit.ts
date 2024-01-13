@@ -4,6 +4,7 @@ export * from 'lit';
 export * from 'lit/decorators.js';
 
 export * from 'lit/directives/class-map.js';
+export * from 'lit/directives/map.js';
 export * from 'lit/directives/when.js';
 
 /**
