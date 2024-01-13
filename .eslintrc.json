@@ -23,13 +23,7 @@
       }
     }
   },
-  "ignorePatterns": [
-    "webpack.*.js",
-    "plugin/**/*",
-    "scripts/**/*.js",
-    "runtime/**/*",
-    "dist/**/*.js"
-  ],
+  "ignorePatterns": ["webpack.*.js", "dist/**/*.js"],
   "plugins": ["@typescript-eslint", "eslint-plugin-jsdoc", "import"],
   "rules": {
     "curly": ["error"],
@@ -105,6 +99,7 @@
         "next": ["if", "for", "do", "while", "try"]
       }
     ],
+    "@typescript-eslint/unbound-method": ["off"],
     "@typescript-eslint/lines-between-class-members": ["off"],
     "@typescript-eslint/no-explicit-any": ["off"],
     "@typescript-eslint/no-unused-vars": [
