@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const { version } = require('./package.json');
 
 const views = ['popup', 'settings', 'sidebar'];
-const contentScripts = ['google', 'youtube'];
+const contentScripts = ['jpdb-settings', 'google', 'youtube'];
 
 module.exports = {
   async config(env) {
@@ -50,6 +50,7 @@ module.exports = {
           '@components': path.resolve(__dirname, 'src/components'),
           '@lib': path.resolve(__dirname, 'src/lib'),
           '@styles': path.resolve(__dirname, 'src/styles'),
+          '@typings': path.resolve(__dirname, 'src/typings'),
         },
       },
       plugins: [
@@ -64,12 +65,6 @@ module.exports = {
           __ENV__: JSON.stringify(),
           __PRODUCTION__: JSON.stringify(env === 'production'),
           __DEVELOPMENT__: JSON.stringify(env === 'development'),
-        }),
-        new ids.HashedModuleIdsPlugin({
-          context: __dirname,
-          hashFunction: 'sha256',
-          hashDigest: 'hex',
-          hashDigestLength: 10,
         }),
         ...views.map(
           (view) =>
@@ -131,20 +126,6 @@ module.exports = {
         filename: 'runtime/[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
-      },
-      optimization: {
-        moduleIds: 'deterministic',
-        runtimeChunk: 'single',
-        usedExports: true,
-        splitChunks: {
-          cacheGroups: {
-            vendor: {
-              name: 'vendors',
-              chunks: 'all',
-              test: /[\\/]node_modules[\\/]/,
-            },
-          },
-        },
       },
     };
   },

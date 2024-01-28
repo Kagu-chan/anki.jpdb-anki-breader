@@ -13,7 +13,8 @@
       "@apps/*": ["src/apps/*"],
       "@components/*": ["src/components/*"],
       "@lib/*": ["src/lib/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@typings/*": ["src/typings/*"]
     }
   }
 }

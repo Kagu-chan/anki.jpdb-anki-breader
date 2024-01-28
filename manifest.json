@@ -20,6 +20,10 @@
   },
   "content_scripts": [
     {
+      "matches": ["*://jpdb.io/*"],
+      "js": ["apps/jpdb-settings.js"]
+    },
+    {
       "matches": ["https://google.com/*"],
       "js": ["apps/google.js"]
     },
@@ -28,8 +32,8 @@
       "js": ["apps/youtube.js"]
     }
   ],
-  "permissions": ["sidePanel", "contextMenus", "tabs", "scripting"],
   "host_permissions": ["http://*/*", "https://*/*"],
+  "permissions": ["sidePanel", "contextMenus", "tabs", "activeTab", "scripting"],
   "icons": {
     "16": "assets/fav/16.png",
     "48": "assets/fav/48.png",
