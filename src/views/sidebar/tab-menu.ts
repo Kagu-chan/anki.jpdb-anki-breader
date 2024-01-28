@@ -3,11 +3,6 @@ import { TabsElement } from '@components/tabs-element';
 import { customElement, query, TemplateResult, html, map, when } from '@lib/lit';
 import { MdMenu } from '@material/web/menu/menu.js';
 
-import '@material/web/iconbutton/icon-button.js';
-import '@material/web/icon/icon.js';
-import '@material/web/menu/menu.js';
-import '@material/web/menu/menu-item.js';
-
 @customElement('sidebar-tab-menu')
 export class SidebarTabMenu extends TabsElement {
   @query('#tab-menu-menu') private _menu!: MdMenu;

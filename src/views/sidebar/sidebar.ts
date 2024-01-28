@@ -1,8 +1,13 @@
 import { componentStyles } from '@components/component-styles';
 import { customElement, LitElement, TemplateResult, html } from '@lib/lit';
 
-import '@components/settings-button';
 import '@material/web/icon/icon.js';
+import '@material/web/iconbutton/icon-button.js';
+import '@material/web/menu/menu.js';
+import '@material/web/menu/menu-item.js';
+
+import '@components/settings-button';
+
 import './icon';
 import './tab-menu';
 import './title';

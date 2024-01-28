@@ -2,8 +2,6 @@ import { componentStyles } from '@components/component-styles';
 import { TabElement } from '@components/tab-element';
 import { customElement, TemplateResult, html, when } from '@lib/lit';
 
-import '@material/web/icon/icon.js';
-
 @customElement('sidebar-icon')
 export class SidebarIcon extends TabElement {
   public static styles = [componentStyles];
