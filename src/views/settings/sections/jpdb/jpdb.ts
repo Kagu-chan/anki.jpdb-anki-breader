@@ -14,11 +14,6 @@ import { TabManager } from '@lib/tab-manager';
 import { JPDBApiKeyResponse } from '@typings/jpdb';
 import jpdbIcon from './jpdb.png';
 
-import '@components/md/text/password';
-import '@material/web/button/text-button.js';
-import '@material/web/iconbutton/icon-button.js';
-import '@material/web/icon/icon.js';
-
 @customElement('settings-section-jpdb')
 export class SettingsSectionJPDB extends LitElement {
   @property({ type: String }) public apiKey?: string = '';

@@ -21,6 +21,7 @@ export class MdCard extends LitElement {
   public static styles = [unsafeCSS(cardStyles)];
 
   public render(): TemplateResult {
+    // TODO: Make collapsible plus stateful
     return html`<div class="md-card" ?collapsible="${this.collapsible}">
       <div class="title">
         <div class="title-contents"><slot name="title"></slot></div>

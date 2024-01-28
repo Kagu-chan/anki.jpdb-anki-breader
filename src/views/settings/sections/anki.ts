@@ -3,10 +3,6 @@ import { MdText } from '@components/md/text/text';
 import { LitElement, TemplateResult, customElement, html, property, query, state } from '@lib/lit';
 import ankiIcon from './anki.png';
 
-import '@components/md/text/password';
-import '@components/md/text/text';
-import './section';
-
 @customElement('settings-section-anki')
 export class SettingsSectionAnki extends LitElement {
   @property({ type: String }) public ankiUrl?: string = '';

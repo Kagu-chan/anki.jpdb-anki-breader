@@ -2,9 +2,15 @@ import { componentStyles } from '@components/component-styles';
 import { LitElement, TemplateResult, html, customElement } from '@lib/lit';
 import { openSidebar } from '@lib/sidebar';
 
+import '@material/web/button/text-button.js';
 import '@material/web/divider/divider.js';
-import '@material/web/iconbutton/icon-button.js';
 import '@material/web/icon/icon.js';
+import '@material/web/iconbutton/icon-button.js';
+
+import '@components/md/card/card';
+import '@components/md/text/password';
+import '@components/md/text/text';
+
 import './sections/section';
 import './sections/jpdb/jpdb';
 import './sections/anki';

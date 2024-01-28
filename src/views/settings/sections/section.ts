@@ -1,10 +1,6 @@
 import { componentStyles } from '@components/component-styles';
 import { LitElement, TemplateResult, html, customElement, property } from '@lib/lit';
 
-import '@components/md/card/card';
-import '@material/web/button/text-button.js';
-import '@material/web/icon/icon.js';
-
 @customElement('settings-section')
 export class SettingsSection extends LitElement {
   @property({ type: String }) public title: string;
