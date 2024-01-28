@@ -127,6 +127,12 @@ export class MdText extends LitElement {
     };
   }
 
+  public setValue(value: string): void {
+    this.value = value;
+
+    this._changeSubject.next();
+  }
+
   protected onInput(): void {
     this._changeSubject.next();
   }

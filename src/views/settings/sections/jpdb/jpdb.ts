@@ -115,7 +115,7 @@ export class SettingsSectionJPDB extends LitElement {
     });
 
     if (response.apiKey) {
-      this.apiKey = response.apiKey;
+      this._apiKey?.setValue(response.apiKey);
     }
   }
 
