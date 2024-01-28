@@ -16,9 +16,12 @@ export class SettingsSection extends LitElement {
   public render(): TemplateResult {
     return html` <md-card collapsible actionsBorder>
       <div slot="title">${this.title}</div>
-      ${this._isImage(this.icon)
-        ? html`<img class="icon" slot="icon" src="${this.icon}" />`
-        : html`<md-icon class="icon" slot="icon">${this.icon}</md-icon>`}
+      <div class="icon-container" slot="icon">
+        <slot name="extra-icon"></slot>
+        ${this._isImage(this.icon)
+          ? html`<img class="icon" slot="icon" src="${this.icon}" />`
+          : html`<md-icon class="icon" slot="icon">${this.icon}</md-icon>`}
+      </div>
       <slot></slot>
       <md-text-button
         slot="actions-end"

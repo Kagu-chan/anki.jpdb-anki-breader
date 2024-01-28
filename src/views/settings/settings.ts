@@ -6,7 +6,7 @@ import '@material/web/divider/divider.js';
 import '@material/web/iconbutton/icon-button.js';
 import '@material/web/icon/icon.js';
 import './sections/section';
-import './sections/jpdb';
+import './sections/jpdb/jpdb';
 import './sections/anki';
 
 @customElement('settings-view')

@@ -19,6 +19,8 @@ export class SettingsSectionAnki extends LitElement {
   @query("[name='anki-url']") private _ankiUrl?: MdText;
   @query("[name='anki-api-key']") private _apiKey?: MdTextPassword;
 
+  // function compositeValidate(fields: this._ankiUrl, this._apiKey) => implement this somehow - wenn anki sagt "jo", dann ist beides korrekt. ansonsten prüfen was falsch ist und das zurückgeben, sodass ein ungültiger api key nicht als ungültige url angezeigt wird.
+
   public render(): TemplateResult {
     return html`<settings-section
       title="Anki"
