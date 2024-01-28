@@ -3,10 +3,14 @@ import { customElement, LitElement, TemplateResult, html, unsafeCSS } from '@lib
 import { openSidebar } from '@lib/sidebar';
 import popupStyles from './popup.scss';
 
-import '@components/settings-button';
 import '@material/web/button/text-button';
-import '@material/web/icon/icon.js';
 import '@material/web/divider/divider.js';
+import '@material/web/icon/icon.js';
+import '@material/web/list/list.js';
+import '@material/web/list/list-item.js';
+
+import '@components/settings-button';
+
 import './tab-list';
 
 @customElement('popup-view')

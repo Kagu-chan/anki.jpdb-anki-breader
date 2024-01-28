@@ -2,10 +2,6 @@ import { componentStyles } from '@components/component-styles';
 import { TabsElement } from '@components/tabs-element';
 import { TemplateResult, css, html, customElement, map, when } from '@lib/lit';
 
-import '@material/web/icon/icon.js';
-import '@material/web/list/list.js';
-import '@material/web/list/list-item.js';
-
 @customElement('popup-tab-list')
 export class PopupTabList extends TabsElement {
   public static styles = [
