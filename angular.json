@@ -15,11 +15,14 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "./custom-webpack.config.ts"
+            },
             "outputPath": "dist",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "sass",
@@ -33,28 +36,7 @@
               "src/assets"
             ],
             "styles": ["src/styles.sass"],
-            "scripts": [
-              {
-                "input": "src/chrome/service-worker.js",
-                "inject": false,
-                "bundleName": "service-worker"
-              },
-              {
-                "input": "src/chrome/apps/google.js",
-                "inject": false,
-                "bundleName": "google"
-              },
-              {
-                "input": "src/chrome/apps/jpdb-settings.js",
-                "inject": false,
-                "bundleName": "jpdb-settings"
-              },
-              {
-                "input": "src/chrome/apps/youtube.js",
-                "inject": false,
-                "bundleName": "youtube"
-              }
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -70,7 +52,7 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "optimization": false,
