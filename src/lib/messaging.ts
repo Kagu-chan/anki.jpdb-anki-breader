@@ -22,17 +22,27 @@ chrome.runtime.onMessage.addListener(
     sendResponse: (response: { success: boolean; result: unknown }) => void,
   ): boolean => {
     if (globalCallbacks.has(request.key)) {
-      const fn = globalCallbacks.get(request.key) as (...args: unknown[]) => Promise<unknown>;
+      const fn = globalCallbacks.get(request.key) as (...args: unknown[]) => unknown;
 
-      void fn(...(request.args ?? []))
-        .then((result) => {
-          sendResponse({ success: true, result });
-        })
-        .catch((_error) => {
-          sendResponse({ success: false, result: undefined });
-        });
+      try {
+        const fnResult = fn(...(request.args ?? []));
 
-      return true;
+        if (fnResult instanceof Promise) {
+          fnResult
+            .then((result: unknown) => {
+              sendResponse({ success: true, result });
+            })
+            .catch((_error) => {
+              sendResponse({ success: false, result: undefined });
+            });
+
+          return true;
+        }
+
+        sendResponse({ success: true, result: fnResult });
+      } catch (error) {
+        sendResponse({ success: false, result: undefined });
+      }
     }
 
     return false;
