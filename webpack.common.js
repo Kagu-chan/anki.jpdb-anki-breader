@@ -14,14 +14,14 @@ module.exports = {
       entry: {
         'service-worker': {
           import: './src/service-worker.ts',
-          filename: 'service-worker.js',
+          runtime: false,
         },
         ...contentScripts.reduce(
           (acc, contentScript) =>
             Object.assign(acc, {
               [`apps/${contentScript}`]: {
                 import: `./src/apps/${contentScript}.ts`,
-                filename: `apps/${contentScript}.js`,
+                runtime: false,
               },
             }),
           {},
@@ -31,7 +31,6 @@ module.exports = {
             Object.assign(acc, {
               [`view/${view}`]: {
                 import: `./src/views/${view}/${view}.ts`,
-                filename: `views/${view}/${view}.js`,
               },
             }),
           {},
@@ -68,7 +67,7 @@ module.exports = {
         ...views.map(
           (view) =>
             new HtmlWebpackPlugin({
-              filename: `views/${view}/${view}.html`,
+              filename: `views/${view}.html`,
               template: `src/views/${view}/${view}.html`,
               chunks: ['styles', `view/${view}`],
             }),
@@ -105,7 +104,7 @@ module.exports = {
           },
           {
             test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
-            type: 'asset/inline',
+            type: 'asset/resource',
           },
           {
             test: /.([cm]?ts|tsx)$/,
@@ -122,9 +121,20 @@ module.exports = {
         ],
       },
       output: {
-        filename: 'runtime/[name].[contenthash].js',
+        filename: 'runtime/[name].js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
+      },
+      stats: {
+        all: false,
+        errors: true,
+        errorsCount: true,
+        errorStack: true,
+        errorDetails: true,
+        assets: true,
+        colors: true,
+        entrypoints: true,
+        chunks: true,
       },
     };
   },

@@ -5,13 +5,13 @@
   "description": "Anki mining and JPDB parsing in your browser",
   "minimum_chrome_version": "116",
   "background": {
-    "service_worker": "service-worker.js"
+    "service_worker": "runtime/service-worker.js"
   },
   "side_panel": {
-    "default_path": "index.html"
+    "default_path": "views/sidebar.html"
   },
   "action": {
-    "default_popup": "index.html",
+    "default_popup": "views/popup.html",
     "default_icon": {
       "16": "assets/16.png",
       "48": "assets/48.png",
@@ -21,15 +21,15 @@
   "content_scripts": [
     {
       "matches": ["*://jpdb.io/*"],
-      "js": ["jpdb-settings.js"]
+      "js": ["runtime/apps/jpdb-settings.js"]
     },
     {
       "matches": ["https://google.com/*"],
-      "js": ["google.js"]
+      "js": ["runtime/apps/google.js"]
     },
     {
       "matches": ["https://youtube.com/*"],
-      "js": ["youtube.js"]
+      "js": ["runtime/apps/youtube.js"]
     }
   ],
   "host_permissions": ["http://*/*", "https://*/*"],

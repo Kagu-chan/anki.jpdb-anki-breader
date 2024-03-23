@@ -1,1 +1,0 @@
-{"version":3,"file":"apps/youtube.js","mappings":";;;;;AAAA;AACA","sources":["webpack://anki.jpdb-anki-breader/./src/apps/youtube.ts"],"sourcesContent":["// eslint-disable-next-line no-console\nconsole.log('This should only happen on youtube!');\n"],"names":[],"sourceRoot":""}
