@@ -10,8 +10,8 @@ import {
   state,
   when,
 } from '@lib/lit';
+import { readLocalStorage, setLocalStorage } from '@lib/messaging';
 import { TabManager } from '@lib/tab-manager';
-import { JPDBApiKeyResponse } from '@typings/jpdb';
 import jpdbIcon from './jpdb.png';
 
 @customElement('settings-section-jpdb')
@@ -34,6 +34,7 @@ export class SettingsSectionJPDB extends LitElement {
   ];
 
   private JPDB_SETTINGS_URL = 'https://jpdb.io/settings';
+  private getApiKey = TabManager.instance.getTabCallable<[], string>('copy-api-key');
 
   constructor() {
     super();
@@ -42,8 +43,9 @@ export class SettingsSectionJPDB extends LitElement {
       this._isJpdbSettingsOpen = tab.url === this.JPDB_SETTINGS_URL;
     };
 
-    void TabManager.instance.fetchActiveTab().then(setTabOpenState);
-    TabManager.instance.onTabUpdate(setTabOpenState);
+    void TabManager.instance.fetchActiveTabAndMonitor(setTabOpenState);
+
+    void readLocalStorage('jpdb-api-key').then(({ result }) => this._apiKey?.setValue(result));
   }
 
   public render(): TemplateResult {
@@ -51,7 +53,7 @@ export class SettingsSectionJPDB extends LitElement {
       title="JPDB"
       icon="${jpdbIcon}"
       .allowSave="${this._hasChanges && !this._hasError && !this._isValidating}"
-      @save="${(): void => this.onSave()}"
+      @save=${this.onSave}
     >
       ${when(
         this._isJpdbSettingsOpen,
@@ -85,8 +87,8 @@ export class SettingsSectionJPDB extends LitElement {
     // TODO add jpdb options in case one does not use anki
   }
 
-  protected onSave(): void {
-    // TODO: implement
+  protected async onSave(): Promise<void> {
+    await setLocalStorage('jpdb-api-key', this.apiKey ?? '');
   }
 
   protected onValueChange(): void {
@@ -103,19 +105,17 @@ export class SettingsSectionJPDB extends LitElement {
     // TODO implement actual API Key validation
     return await new Promise((resolve) => {
       setTimeout(() => {
-        // resolve(undefined);
-        resolve('Could not connect to JPDB with this API Key');
+        resolve(undefined);
+        // resolve('Could not connect to JPDB with this API Key');
       }, 3000);
     });
   }
 
   protected async onCopyApiKey(): Promise<void> {
-    const response: JPDBApiKeyResponse = await TabManager.instance.sendEvent({
-      action: 'copy-api-key',
-    });
+    const { success, result: apiKey } = await this.getApiKey();
 
-    if (response.apiKey) {
-      this._apiKey?.setValue(response.apiKey);
+    if (success) {
+      this._apiKey?.setValue(apiKey);
     }
   }
 

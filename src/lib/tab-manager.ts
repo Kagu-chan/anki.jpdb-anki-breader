@@ -102,22 +102,20 @@ export class TabManager {
     }
   }
 
-  public async sendEvent<TIn extends { action?: string }, TOut extends object>(
-    request: TIn,
-  ): Promise<TOut>;
-  public async sendEvent<TIn extends { action?: string }, TOut extends object>(
-    tabId: number,
-    request: TIn,
-  ): Promise<TOut>;
+  public getTabCallable<TArgs extends any[], TOut>(
+    key: string,
+  ): (options?: { tabId?: number; args?: TArgs }) => Promise<{ success: boolean; result: TOut }> {
+    return async (options?: {
+      tabId?: number;
+      args?: TArgs;
+    }): Promise<{ success: boolean; result: TOut }> => {
+      const tabId = options?.tabId ?? (await this.fetchActiveTab())?.id;
 
-  public async sendEvent<TIn extends { action?: string }, TOut extends object>(
-    p1: number | TIn,
-    p2?: TIn,
-  ): Promise<TOut> {
-    const tabId = typeof p1 === 'number' ? p1 : (await this.fetchActiveTab())?.id;
-    const request = typeof p1 === 'number' ? p2 : p1;
-
-    return (await chrome.tabs.sendMessage(tabId, request)) as TOut;
+      return (await chrome.tabs.sendMessage(tabId, { key, args: options?.args })) as {
+        success: boolean;
+        result: TOut;
+      };
+    };
   }
 
   private getFakeTabs(): chrome.tabs.Tab[] {

@@ -33,7 +33,7 @@
     }
   ],
   "host_permissions": ["http://*/*", "https://*/*"],
-  "permissions": ["sidePanel", "contextMenus", "tabs", "activeTab", "scripting"],
+  "permissions": ["sidePanel", "contextMenus", "tabs", "activeTab", "scripting", "storage"],
   "icons": {
     "16": "assets/fav/16.png",
     "48": "assets/fav/48.png",

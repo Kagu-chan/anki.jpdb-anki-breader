@@ -50,7 +50,6 @@ module.exports = {
           '@components': path.resolve(__dirname, 'src/components'),
           '@lib': path.resolve(__dirname, 'src/lib'),
           '@styles': path.resolve(__dirname, 'src/styles'),
-          '@typings': path.resolve(__dirname, 'src/typings'),
         },
       },
       plugins: [
