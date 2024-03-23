@@ -13,7 +13,7 @@ export const openSidebar = (view: string, closeView?: boolean): void => {
     chrome.sidePanel.setOptions(
       {
         tabId: activeTab.id,
-        path: `views/${view}/${view}.html`,
+        path: `views/${view}.html`,
         enabled: true,
       },
       () => {
