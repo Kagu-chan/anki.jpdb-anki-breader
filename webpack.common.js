@@ -125,17 +125,6 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         clean: true,
       },
-      stats: {
-        all: false,
-        errors: true,
-        errorsCount: true,
-        errorStack: true,
-        errorDetails: true,
-        assets: true,
-        colors: true,
-        entrypoints: true,
-        chunks: true,
-      },
     };
   },
 };

@@ -1,17 +1,12 @@
 import { componentStyles } from '@components/component-styles';
 import { TabsElement } from '@components/tabs-element';
-import { TemplateResult, css, html, customElement, map, when } from '@lib/lit';
+import { TemplateResult, html, customElement, map, when, unsafeCSS } from '@lib/lit';
+
+import tabListStyles from './tab-list.scss';
 
 @customElement('popup-tab-list')
 export class PopupTabList extends TabsElement {
-  public static styles = [
-    componentStyles,
-    css`
-      md-list-item[active] {
-        background-color: rgba(1, 1, 1, 0.05);
-      }
-    `,
-  ];
+  public static styles = [componentStyles, unsafeCSS(tabListStyles)];
 
   public render(): TemplateResult {
     return html`<md-list>
