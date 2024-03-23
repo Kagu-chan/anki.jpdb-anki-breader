@@ -1,3 +1,6 @@
+_cfg
+_dist
+_src
+.angular
+.vscode
 old
-webpack.*
-alpine.min.js
