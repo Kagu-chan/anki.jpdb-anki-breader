@@ -8,35 +8,35 @@
     "service_worker": "service-worker.js"
   },
   "side_panel": {
-    "default_path": "views/sidebar/sidebar.html"
+    "default_path": "index.html"
   },
   "action": {
-    "default_popup": "views/popup/popup.html",
+    "default_popup": "index.html",
     "default_icon": {
-      "16": "assets/fav/16.png",
-      "48": "assets/fav/48.png",
-      "128": "assets/fav/128.png"
+      "16": "assets/16.png",
+      "48": "assets/48.png",
+      "128": "assets/128.png"
     }
   },
   "content_scripts": [
     {
       "matches": ["*://jpdb.io/*"],
-      "js": ["apps/jpdb-settings.js"]
+      "js": ["jpdb-settings.js"]
     },
     {
       "matches": ["https://google.com/*"],
-      "js": ["apps/google.js"]
+      "js": ["google.js"]
     },
     {
       "matches": ["https://youtube.com/*"],
-      "js": ["apps/youtube.js"]
+      "js": ["youtube.js"]
     }
   ],
   "host_permissions": ["http://*/*", "https://*/*"],
   "permissions": ["sidePanel", "contextMenus", "tabs", "activeTab", "scripting", "storage"],
   "icons": {
-    "16": "assets/fav/16.png",
-    "48": "assets/fav/48.png",
-    "128": "assets/fav/128.png"
+    "16": "assets/16.png",
+    "48": "assets/48.png",
+    "128": "assets/128.png"
   }
 }
