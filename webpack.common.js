@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const { version } = require('./package.json');
 
 const views = ['popup', 'settings', 'sidebar'];
-const contentScripts = ['jpdb-settings', 'google', 'youtube'];
+const contentScripts = ['jpdb-settings', 'youtube'];
 
 module.exports = {
   async config(env) {

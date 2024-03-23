@@ -24,10 +24,6 @@
       "js": ["runtime/apps/jpdb-settings.js"]
     },
     {
-      "matches": ["https://google.com/*"],
-      "js": ["runtime/apps/google.js"]
-    },
-    {
       "matches": ["https://youtube.com/*"],
       "js": ["runtime/apps/youtube.js"]
     }
